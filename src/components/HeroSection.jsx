@@ -1,5 +1,5 @@
 // src/components/HeroSection.jsx
-// Cinematic full-screen hero with breathe text, scroll line, staggered reveal
+// Cinematic full-screen hero with massive "ONE MORE EPISODE" title and neon glow
 
 export default function HeroSection() {
   return (
@@ -32,26 +32,16 @@ export default function HeroSection() {
       </div>
 
       {/* Main headline */}
-      <div className="breathe" style={{ maxWidth: 900 }}>
-        <h1 className="text-display" style={{ marginBottom: '1.5rem' }}>
-          We don't prevent<br />
-          <span style={{
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.55) 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}>
-            bad decisions.
-          </span>
+      <div style={{ maxWidth: 1100 }}>
+        <h1 className="hero-title">
+          ONE MORE<br />EPISODE
         </h1>
-        <h2 className="text-display" style={{ fontSize: 'clamp(3rem, 8vw, 7rem)' }}>
-          We quantify them.
-        </h2>
       </div>
 
       {/* Sub text */}
       <p className="text-body" style={{
         marginTop: '2.5rem',
-        maxWidth: 480,
+        maxWidth: 520,
         fontSize: '1.1rem',
         lineHeight: 1.65,
       }}>

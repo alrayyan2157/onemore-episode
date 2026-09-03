@@ -2,13 +2,13 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AlertTriangle, Zap } from 'lucide-react';
-import CustomCursor     from './components/CustomCursor';
-import AmbientBackground from './components/AmbientBackground';
-import HeroSection      from './components/HeroSection';
-import CircularDial     from './components/CircularDial';
-import ScoreOdometer    from './components/ScoreOdometer';
-import RegretGraph      from './components/RegretGraph';
-import PredictionModal  from './components/PredictionModal';
+import CustomCursor       from './components/CustomCursor';
+import StarfieldCanvas    from './components/StarfieldCanvas';
+import HeroSection        from './components/HeroSection';
+import CircularDial       from './components/CircularDial';
+import ScoreOdometer      from './components/ScoreOdometer';
+import MiseryTimeline     from './components/MiseryTimeline';
+import PredictionModal    from './components/PredictionModal';
 import { useRegretEngine } from './hooks/useRegretEngine';
 import { playClick, playWarpChime, playAlertHum } from './hooks/useAudio';
 
@@ -176,8 +176,8 @@ export default function App() {
       )}
 
       <div style={{ position:'relative', minHeight:'100vh', background:'#000' }}>
-        {/* Ambient orbs */}
-        <AmbientBackground />
+        {/* Starfield background */}
+        <StarfieldCanvas />
 
         {/* ── HERO ── */}
         <div style={{ position:'relative', zIndex:1 }}>
@@ -242,7 +242,7 @@ export default function App() {
               </div>
             </BentoCard>
 
-            {/* Wake-up dial (5 cols) */}
+            {/* Wake-up time input (5 cols) */}
             <BentoCard delay={80} style={{ gridColumn:'span 5' }}>
               <div className="label-micro" style={{ marginBottom:'1.5rem' }}>Alarm Ring Time</div>
               <div style={{ display:'flex', justifyContent:'center' }}>
@@ -418,10 +418,18 @@ export default function App() {
               </div>
             </BentoCard>
 
-            {/* Graph (12 cols) */}
+            {/* Misery Timeline (12 cols) */}
             <BentoCard delay={200} style={{ gridColumn:'span 12' }}>
-              <div className="label-micro" style={{ marginBottom:'1.5rem' }}>Predictive Trajectory Analysis</div>
-              <RegretGraph episodes={episodes} finalRegret={finalRegret} />
+              <div className="label-micro" style={{ marginBottom:'1.5rem' }}>Misery Timeline · Sleep Debt Visualizer</div>
+              <MiseryTimeline
+                now={now}
+                wakeUpTime={wakeUpTime}
+                bingeMinutes={bingeMinutes}
+                sleepHours={sleepHours}
+                sleepNeg={sleepNeg}
+                finalRegret={finalRegret}
+                finishTime={finishTime}
+              />
             </BentoCard>
 
             {/* Multi-day warning if needed */}

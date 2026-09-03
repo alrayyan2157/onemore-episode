@@ -1,35 +1,23 @@
 // src/components/PredictionModal.jsx
-// Spring-bounce modal — "Tomorrow You" prediction, shown on CTA click
+// Spring-bounce modal — 12-tier "Tomorrow You" regret messages
 
-const MESSAGES = {
-  0: {
-    headline: 'Tomorrow You is cautiously optimistic.',
-    body: 'You\'ll survive. Coffee: optional. Productivity: marginally impaired. You\'ve made this choice before and you turned out fine. Probably.',
-    icon: '🌙',
-    color: '#00F5D4',
-  },
-  1: {
-    headline: 'Tomorrow You has already cancelled the gym.',
-    body: 'An extra espresso has been pre-ordered. The morning meeting will feature your finest impression of a functioning human being. The raccoon eyes are non-negotiable.',
-    icon: '😑',
-    color: '#F5A623',
-  },
-  2: {
-    headline: 'Tomorrow You is staring at a shower wall.',
-    body: 'It is 7:04 AM. The water has gone cold. You\'re wondering who gave you unsupervised access to a streaming service. The answer is nobody. You did this yourself.',
-    icon: '🚿',
-    color: '#FF6B35',
-  },
-  3: {
-    headline: 'Transmission Lost.',
-    body: 'Tomorrow You has entered a state of full cognitive bankruptcy. No espresso can reverse this. Emergency contact has been notified. You are on your own.',
-    icon: '☠️',
-    color: '#FF2A54',
-  },
-};
+function getRegretMessage(pct) {
+  if (pct >= 100)  return { msg: 'Congratulations. You watched one more. And then another. Sleep has left the chat.', icon: '💀', color: '#FF2A54' };
+  if (pct >= 95)   return { msg: 'Your future self would like to speak to you.',                                      icon: '☠️', color: '#FF2A54' };
+  if (pct >= 90)   return { msg: 'Tomorrow morning is officially your problem.',                                      icon: '🔥', color: '#FF2A54' };
+  if (pct >= 80)   return { msg: 'Congratulations. You have traded sleep for Netflix.',                               icon: '📺', color: '#FF6B35' };
+  if (pct >= 70)   return { msg: 'Your brain will load tomorrow like slow Wi-Fi.',                                    icon: '🐌', color: '#FF6B35' };
+  if (pct >= 60)   return { msg: 'Your alarm is about to become your biggest enemy.',                                icon: '⏰', color: '#F5A623' };
+  if (pct >= 50)   return { msg: 'Tomorrow you is already questioning your decisions.',                               icon: '🤔', color: '#F5A623' };
+  if (pct >= 40)   return { msg: 'Morning you is going to be slightly disappointed.',                                icon: '😑', color: '#F5A623' };
+  if (pct >= 30)   return { msg: "You'll need coffee. Maybe two.",                                                    icon: '☕', color: 'rgba(255,255,255,0.7)' };
+  if (pct >= 20)   return { msg: "Tomorrow's alarm might hurt a little.",                                             icon: '😴', color: 'rgba(255,255,255,0.7)' };
+  if (pct >= 10)   return { msg: 'Just a little sleepy. Nothing serious.',                                            icon: '🌙', color: '#00F5D4' };
+  return                   { msg: "You'll be fine. Probably.",                                                         icon: '✨', color: '#00F5D4' };
+}
 
 export default function PredictionModal({ txTier, finalRegret, sleepHours, sleepNeg, onClose }) {
-  const m = MESSAGES[txTier] || MESSAGES[0];
+  const { msg, icon, color } = getRegretMessage(Math.round(finalRegret));
 
   return (
     <div className="modal-backdrop" onClick={onClose}>
@@ -47,14 +35,14 @@ export default function PredictionModal({ txTier, finalRegret, sleepHours, sleep
         }}>×</button>
 
         {/* Icon */}
-        <div style={{ fontSize: 52, marginBottom: '1rem', lineHeight: 1 }}>{m.icon}</div>
+        <div style={{ fontSize: 52, marginBottom: '1rem', lineHeight: 1 }}>{icon}</div>
 
         {/* Label */}
-        <div className="label-micro" style={{ color: m.color, marginBottom: '0.75rem' }}>
+        <div className="label-micro" style={{ color, marginBottom: '0.75rem' }}>
           Tomorrow You · Encrypted Com-Link
         </div>
 
-        {/* Headline */}
+        {/* Regret message */}
         <h2 style={{
           fontSize: 'clamp(1.3rem, 3vw, 1.8rem)',
           fontWeight: 800,
@@ -62,15 +50,7 @@ export default function PredictionModal({ txTier, finalRegret, sleepHours, sleep
           color: '#fff',
           lineHeight: 1.15,
           marginBottom: '1.25rem',
-        }}>{m.headline}</h2>
-
-        {/* Body */}
-        <p style={{
-          fontSize: '0.95rem',
-          lineHeight: 1.7,
-          color: 'rgba(255,255,255,0.62)',
-          marginBottom: '2rem',
-        }}>{m.body}</p>
+        }}>{msg}</h2>
 
         {/* Stats row */}
         <div style={{
@@ -80,8 +60,8 @@ export default function PredictionModal({ txTier, finalRegret, sleepHours, sleep
           marginBottom: '2rem',
         }}>
           {[
-            { label: 'Regret Score',    value: `${finalRegret.toFixed(3)}%`, color: m.color },
-            { label: 'Projected Sleep', value: sleepNeg ? `−${Math.abs(sleepHours).toFixed(1)}h` : `${sleepHours.toFixed(1)}h`, color: sleepNeg ? '#FF2A54' : m.color },
+            { label: 'Regret Score',    value: `${finalRegret.toFixed(3)}%`, c: color },
+            { label: 'Projected Sleep', value: sleepNeg ? `−${Math.abs(sleepHours).toFixed(1)}h` : `${sleepHours.toFixed(1)}h`, c: sleepNeg ? '#FF2A54' : color },
           ].map(s => (
             <div key={s.label} style={{
               background: 'rgba(255,255,255,0.04)',
@@ -90,7 +70,7 @@ export default function PredictionModal({ txTier, finalRegret, sleepHours, sleep
               padding: '1rem',
             }}>
               <div className="label-micro" style={{ marginBottom: 6 }}>{s.label}</div>
-              <div style={{ fontSize: '1.6rem', fontWeight: 800, letterSpacing: '-0.035em', color: s.color }}>{s.value}</div>
+              <div style={{ fontSize: '1.6rem', fontWeight: 800, letterSpacing: '-0.035em', color: s.c }}>{s.value}</div>
             </div>
           ))}
         </div>

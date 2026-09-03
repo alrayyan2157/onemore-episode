@@ -3,8 +3,8 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-const R = 68; // radius of dial track
-const SIZE = 180;
+const R = 90; // radius of dial track
+const SIZE = 240;
 const CX = SIZE / 2, CY = SIZE / 2;
 
 // Convert angle (0=top, clockwise) to HH:MM
@@ -107,30 +107,30 @@ export default function CircularDial({ value, onChange }) {
         {/* Hour tick marks */}
         {Array.from({length:12},(_,i)=>{
           const a = (i/12)*Math.PI*2 - Math.PI/2;
-          const x1= CX+(R-4)*Math.cos(a), y1=CY+(R-4)*Math.sin(a);
-          const x2= CX+(R+4)*Math.cos(a), y2=CY+(R+4)*Math.sin(a);
+          const x1= CX+(R-5)*Math.cos(a), y1=CY+(R-5)*Math.sin(a);
+          const x2= CX+(R+5)*Math.cos(a), y2=CY+(R+5)*Math.sin(a);
           return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(255,255,255,0.12)" strokeWidth="1"/>;
         })}
 
         {/* Knob */}
-        <circle cx={knobX} cy={knobY} r={9}
+        <circle cx={knobX} cy={knobY} r={12}
           fill="#fff"
           filter="url(#dialGlow)"
           style={{ cursor: 'none' }}
         />
-        <circle cx={knobX} cy={knobY} r={4} fill="#000"/>
+        <circle cx={knobX} cy={knobY} r={5} fill="#000"/>
 
         {/* Centre time */}
-        <text x={CX} y={CY-6} textAnchor="middle"
+        <text x={CX} y={CY-8} textAnchor="middle"
           fill="rgba(255,255,255,0.9)"
-          fontSize="15" fontWeight="800"
+          fontSize="22" fontWeight="800"
           fontFamily="Inter, sans-serif"
           letterSpacing="-0.04em">
           {value}
         </text>
-        <text x={CX} y={CY+12} textAnchor="middle"
+        <text x={CX} y={CY+16} textAnchor="middle"
           fill="rgba(255,255,255,0.28)"
-          fontSize="7.5" fontWeight="600"
+          fontSize="10" fontWeight="600"
           fontFamily="Inter, sans-serif"
           letterSpacing="0.15em">
           ALARM
