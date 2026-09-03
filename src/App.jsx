@@ -203,11 +203,11 @@ export default function App() {
           {/* ─── BENTO GRID ─────────────────────────────────────────────── */}
           <div className="bento-grid">
 
-            {/* Score hero card (spans 7 cols) */}
+            {/* Score hero card (spans 5 cols) */}
             <BentoCard
               delay={0}
               className=""
-              style={{ gridColumn:'span 7' }}
+              style={{ gridColumn:'span 5' }}
             >
               <div className="label-micro" style={{ marginBottom:'1rem' }}>Regret Score Matrix</div>
               <ScoreOdometer value={finalRegret} accentColor={accentColor} />
@@ -242,14 +242,24 @@ export default function App() {
               </div>
             </BentoCard>
 
-            {/* Wake-up time input (5 cols) */}
-            <BentoCard delay={80} style={{ gridColumn:'span 5' }}>
-              <div className="label-micro" style={{ marginBottom:'1.5rem' }}>Alarm Ring Time</div>
-              <div style={{ display:'flex', justifyContent:'center' }}>
+            {/* Wake-up time — glassmorphic oversized dial (7 cols) */}
+            <BentoCard delay={80} style={{ gridColumn:'span 7' }}>
+              <div className="label-micro" style={{ marginBottom:'1.25rem', textAlign:'center' }}>Alarm Ring Time</div>
+              <div className="glassmorphic-alarm">
                 <CircularDial
                   value={wakeUpTime}
                   onChange={(v) => { setWakeUpTime(v); playClick(); }}
                 />
+              </div>
+              <div style={{
+                marginTop: 12,
+                fontSize: 10,
+                fontWeight: 500,
+                color: 'rgba(255,255,255,0.2)',
+                letterSpacing: '0.08em',
+                textAlign: 'center',
+              }}>
+                Drag ring or type center · 24-hour format
               </div>
             </BentoCard>
 

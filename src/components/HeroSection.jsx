@@ -1,7 +1,9 @@
 // src/components/HeroSection.jsx
-// Cinematic full-screen hero with massive "ONE MORE EPISODE" title and neon glow
+// Cinematic full-screen hero with ethereal starlight "ONE MORE EPISODE" title
 
 export default function HeroSection() {
+  const titleText = 'ONE MORE\nEPISODE';
+
   return (
     <section style={{
       position: 'relative',
@@ -31,14 +33,18 @@ export default function HeroSection() {
         </span>
       </div>
 
-      {/* Main headline */}
-      <div style={{ maxWidth: 1100 }}>
-        <h1 className="hero-title">
+      {/* Main headline — ethereal starlight title */}
+      <div style={{ maxWidth: 1200 }}>
+        <h1
+          className="hero-title"
+          data-text="ONE MORE EPISODE"
+          aria-label="One More Episode"
+        >
           ONE MORE<br />EPISODE
         </h1>
       </div>
 
-      {/* Sub text */}
+      {/* Subtitle */}
       <p className="text-body" style={{
         marginTop: '2.5rem',
         maxWidth: 520,
