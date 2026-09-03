@@ -51,8 +51,7 @@ export default function HeroSection() {
         fontSize: '1.1rem',
         lineHeight: 1.65,
       }}>
-        A hyper-precise, mathematically rigorous tool for calculating
-        the exact cost of watching <em>just one more episode.</em>
+        It doesn't stop you from watching. It documents your downfall.
       </p>
 
       {/* Scroll CTA */}
