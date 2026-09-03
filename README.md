@@ -2,47 +2,55 @@
 
 
 
-# [Project Name] 🎯
+# One More Episode 🎬
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: Strell
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: AlRayyan Arshad - Model Engineering College, Thrikkakara
+- Member 2: Pranav Santhosh - Model Engineering College, Thrikkakara
 
 ### Project Description
-[2-3 lines about what your project does]
+One More Episode is a hyper-precise, satirical "Sleep Regret Prediction Engine" that calculates the exact cost of watching *just one more episode* before bed. It uses a mathematically rigorous (and entirely tongue-in-cheek) regret formula to predict how badly Tomorrow You will suffer.
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+Every night, millions of people face the devastating dilemma of whether to watch one more episode. They have absolutely zero tools to quantify the catastrophic consequences of this decision. How can anyone make a terrible decision without the proper data?
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+A premium, Awwwards-grade web application that lets you configure your binge parameters — episode count, runtime, wake-up alarm, tomorrow's stakes, and cliffhanger intensity — and outputs a real-time **Regret Score** (0–100%) along with a snarky "Transmission from Tomorrow You" predicting your morning fate.
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
-
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
+- **Languages:** JavaScript (JSX)
+- **Frameworks:** React 19, Vite 8
+- **Libraries:** Tailwind CSS 4, Lucide React (icons)
+- **Tools:** ESLint, Vite Dev Server
 
 ### Implementation
 For Software:
+
 # Installation
-[commands]
+```bash
+git clone https://github.com/alrayyan2157/onemore-episode.git
+cd onemore-episode
+npm install
+```
 
 # Run
-[commands]
+```bash
+npm run dev
+```
+The app will be available at `http://localhost:5173`.
+
+# Build for Production
+```bash
+npm run build
+npm run preview
+```
 
 ### Project Documentation
 For Software:
@@ -58,27 +66,21 @@ For Software:
 *Add caption explaining what this shows*
 
 # Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
-
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
+```mermaid
+graph TD
+    A[User Inputs] --> B[useRegretEngine Hook]
+    B --> C{Sleep Minutes ≤ 0?}
+    C -->|Yes| D[Regret = 99.999%]
+    C -->|No| E[Calculate Sleep Deficit Ratio]
+    E --> F[Apply Stakes Multiplier]
+    F --> G[Add Cliffhanger Bonus]
+    G --> H[Final Regret Score]
+    H --> I[Color & Status Mapping]
+    I --> J[UI Updates: Score, Graph, Accent Color]
+    H --> K[Transmission Tier 0–3]
+    K --> L[Tomorrow You Prediction Modal]
+```
+*Architecture of the Sleep Regret Engine — from user inputs to the final regret prediction*
 
 ### Project Demo
 # Video
@@ -89,15 +91,11 @@ For Hardware:
 [Add any extra demo materials/links]
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+- **AlRayyan Arshad**: [Specific contributions]
+- **Pranav Santhosh**: [Specific contributions]
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
 
 ![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
 ![Static Badge](https://img.shields.io/badge/UselessProjects--26-26?link=https%3A%2F%2Ftinkerhub.org%2Fevents%2F1M8ORET9A1%2Fuseless-projects-3.0)
-
-
-
