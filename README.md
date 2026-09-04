@@ -70,8 +70,8 @@ graph TD
 *Architecture of the Sleep Regret Engine — from user inputs to the final regret prediction*
 
 ## Team Contributions
-- **AlRayyan Arshad**: [Specific contributions]
-- **Pranav Santhosh**: [Specific contributions]
+- **AlRayyan Arshad**: Core engine logic and application architecture.
+- **Pranav Santhosh**: Frontend UI/UX design and animations.
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
